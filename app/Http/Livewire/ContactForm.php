@@ -24,7 +24,8 @@ class ContactForm extends Component
     protected $rules = [
         'name' => 'required|min:6',
         'email' => 'required|email',
-    ];
+        'telefone' => 'required|min:11',
+        ];
 
     protected $messages = [
         'email.required' => 'O email não pode estar vazio.',

@@ -20,7 +20,6 @@
                     </div>
                 @endif
             </div>
-
         @endif
         <div class="card p-4" >
             <form  wire:submit.prevent="submit">
@@ -52,7 +51,7 @@
                         <div class="mb-3">
                             <label for="nome">Telefone</label>
                             <input class="form-control" value="" id="telefone" type="text" wire:model="telefone">
-                            @error('name')
+                            @error('telefone')
                                 <span class="error"><strong>{{ $message }}</strong></span>
                             @enderror
                         </div>
@@ -62,7 +61,7 @@
                         <div class="mb-3">
                             <label for="instagram">Instagram</label>
                             <input class="form-control" value="" type="text" id="instagram" wire:model="instagram">
-                            @error('email')
+                            @error('instagram')
                                 <strong>{{ $message }}</strong>
                             @enderror
                         </div>
@@ -72,7 +71,7 @@
                         <div class="mb-3">
                             <label for="facebook">Facebook</label>
                             <input class="form-control" value="" type="text" id="instagram" wire:model="facebook">
-                            @error('email')
+                            @error('facebook')
                                 <strong>{{ $message }}</strong>
                             @enderror
                         </div>
@@ -82,7 +81,7 @@
                         <div class="mb-3">
                             <label for="twitter">Twitter</label>
                             <input class="form-control" value="" type="text" id="twitter" wire:model="twitter">
-                            @error('email')
+                            @error('twitter')
                                 <strong>{{ $message }}</strong>
                             @enderror
                         </div>
