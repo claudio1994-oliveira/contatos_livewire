@@ -5,13 +5,17 @@ namespace App\Http\Livewire;
 use App\Models\Contato;
 use Illuminate\Contracts\Session\Session;
 use Livewire\Component;
+use Livewire\WithFileUploads;
+use Illuminate\Support\Str;
 
 class ContactForm extends Component
 {
+    use WithFileUploads;
 
     public $name;
     public $email;
     public $contatos;
+    public $photo;
  
     protected $rules = [
         'name' => 'required|min:6',
@@ -78,4 +82,24 @@ class ContactForm extends Component
       }
       return false;
     }
+
+    public function storagePhoto($id)
+    {
+        $this->validate([
+            'photo' => 'required|image|max:1024'
+        ]);
+
+        $contato = Contato::find($id);
+
+        $nameFile = Str::slug($contato->nome) . '.' . $this->photo->getClientOriginalExtension();
+
+        if ($path = $this->photo->storeAs('contatos', $nameFile)) {
+
+            $contato->photo_path = $path; 
+            $contato->save();
+        }
+
+        return back()->with('success', 'Foto alterada com sucesso!');
+    }
+
 }

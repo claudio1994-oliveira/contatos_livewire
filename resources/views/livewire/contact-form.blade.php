@@ -54,14 +54,32 @@
                 <tbody>
                     @foreach ($contatos as $contato)
                         <tr>
-                            <td>{{ $contato->nome }}</td>
+                            @if ($contato->photo_path)
+                                <td>
+                                    <img src="{{ url("storage/{$contato->photo_path}") }}" alt="{{ $contato->name }}" class="img-fluid img-thumbnail">
+                                    {{ $contato->nome }}
+                                </td>
+                            @else
+                                <td>
+                                    <img src="{{url('imgs/sem-foto.png')}}" alt="{{ $contato->name }}" class="img-fluid img-thumbnail rounded ">
+                                    {{ $contato->nome }}
+                                </td>
+                            @endif
+                            
                             <td>{{ $contato->email }}</td>
                             <td>
-                                <a href="#" class="btn btn-danger" 
-                                onclick="return confirm('Ao confirmar o contato será apagado permanentemente.') || event.stopImmediatePropagation()"
-                                wire:click.prevent="destroy({{$contato->id}})">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </a>
+                                <div class="d-flex">
+                                    <form wire:submit.prevent="storagePhoto({{$contato->id}})">
+                                        <input class="form-control form-control-sm me-3" type="file" id="formFile" wire:model="photo">
+                                        <button class="btn btn-primary"><i class="fa-solid fa-image"></i></button>
+                                    </form>
+                                    
+                                    <a href="#" class="btn btn-danger" 
+                                    onclick="return confirm('Ao confirmar o contato será apagado permanentemente.') || event.stopImmediatePropagation()"
+                                    wire:click.prevent="destroy({{$contato->id}})">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </a>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
