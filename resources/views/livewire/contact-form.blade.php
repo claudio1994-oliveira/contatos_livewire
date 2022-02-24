@@ -57,7 +57,9 @@
                             <td>{{ $contato->nome }}</td>
                             <td>{{ $contato->email }}</td>
                             <td>
-                                <a href="#" class="btn btn-danger" wire:click.prevent="destroy({{$contato->id}})">
+                                <a href="#" class="btn btn-danger" 
+                                onclick="return confirm('Ao confirmar o contato será apagado permanentemente.') || event.stopImmediatePropagation()"
+                                wire:click.prevent="destroy({{$contato->id}})">
                                     <i class="fa-solid fa-trash-can"></i>
                                 </a>
                             </td>
