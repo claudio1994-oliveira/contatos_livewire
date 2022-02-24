@@ -32,14 +32,13 @@ class ContactForm extends Component
     public function updated()
     {
         $this->contatos = Contato::all();
-        $this->validate();
+       // $this->validate(); Caso precise da validação em tempo real é só chamar o this validate no metodo updated
     }
  
     public function submit()
     {
      
         $this->validate();
- 
 
         $validaEmail = $this->validaEmail($this->email);
 

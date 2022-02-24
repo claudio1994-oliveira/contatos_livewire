@@ -53,23 +53,23 @@
                 </thead>
                 <tbody>
                     @foreach ($contatos as $contato)
-                        <tr>
+                        <tr class="">
                             @if ($contato->photo_path)
-                                <td>
+                                <td class="col-5">
                                     <img src="{{ url("storage/{$contato->photo_path}") }}" alt="{{ $contato->name }}" class="img-fluid img-thumbnail">
                                     {{ $contato->nome }}
                                 </td>
                             @else
-                                <td>
+                                <td class="col-5">
                                     <img src="{{url('imgs/sem-foto.png')}}" alt="{{ $contato->name }}" class="img-fluid img-thumbnail rounded ">
                                     {{ $contato->nome }}
                                 </td>
                             @endif
                             
-                            <td>{{ $contato->email }}</td>
-                            <td>
-                                <div class="d-flex">
-                                    <form wire:submit.prevent="storagePhoto({{$contato->id}})">
+                            <td class="col-4">{{ $contato->email }}</td>
+                            <td class="col-3">
+                                <div class="d-flex justify-content-between">
+                                    <form class="d-flex justify-content-start" wire:submit.prevent="storagePhoto({{$contato->id}})">
                                         <input class="form-control form-control-sm me-3" type="file" id="formFile" wire:model="photo">
                                         <button class="btn btn-primary"><i class="fa-solid fa-image"></i></button>
                                     </form>
