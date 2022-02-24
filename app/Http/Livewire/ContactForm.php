@@ -16,6 +16,10 @@ class ContactForm extends Component
     public $email;
     public $contatos;
     public $photo;
+    public $telefone;
+    public $instagram;
+    public $twitter;
+    public $facebook;
  
     protected $rules = [
         'name' => 'required|min:6',
@@ -49,10 +53,18 @@ class ContactForm extends Component
         Contato::create([
             'nome' => $this->name,
             'email' => $this->email,
+            'telefone' => $this->telefone,
+            'instagram' => $this->instagram,
+            'facebook' => $this->facebook,
+            'twitter' => $this->twitter,
         ]);
 
         $this->name = "";
         $this->email = "" ;
+        $this->telefone = "" ;
+        $this->instagram = "" ;
+        $this->facebook = "" ;
+        $this->twitter = "" ;
         
 
         return back()->with('success', 'Contato salvo com sucesso!');

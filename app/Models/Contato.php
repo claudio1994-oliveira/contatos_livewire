@@ -10,6 +10,6 @@ class Contato extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $fillable = ['email', 'nome', 'photo_path'];
+    protected $fillable = ['email', 'nome','telefone', 'instagram', 'facebook', 'twitter', 'photo_path'];
     protected $dates = ['deleted_at'];
 }
