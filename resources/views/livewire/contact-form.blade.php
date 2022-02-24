@@ -6,7 +6,10 @@
 
         @if ($message = Session::get('success'))
             <div class="alert alert-success alert-dismissible fade show pt-4" role="alert">
-                <strong>{{ $message }}</strong>
+                <strong> 
+                    <i class="fa-solid fa-circle-check"></i>
+                    {{ $message }}
+                </strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
 
@@ -45,6 +48,7 @@
                     <tr>
                         <th scope="col">Nome</th>
                         <th scope="col">E-mail</th>
+                        <th scope="col"><i class="fa-solid fa-gear"></i></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,6 +56,11 @@
                         <tr>
                             <td>{{ $contato->nome }}</td>
                             <td>{{ $contato->email }}</td>
+                            <td>
+                                <a href="#" class="btn btn-danger" wire:click.prevent="destroy({{$contato->id}})">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

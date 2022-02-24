@@ -62,6 +62,14 @@ class ContactForm extends Component
         return view('livewire.contact-form');
     }
 
+    public function destroy($id)
+    {
+        $contato = Contato::find($id);
+        $contato->delete();
+
+        return back()->with('success','Contato apagado com sucesso!');
+    }
+
     private function validaEmail($email){
       $email = Contato::where('email', $email)->first();
 
