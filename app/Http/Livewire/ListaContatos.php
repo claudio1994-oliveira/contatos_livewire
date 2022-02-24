@@ -19,7 +19,6 @@ class ListaContatos extends Component
     public function render()
     {
         $this->contatos = Contato::all();
-        //$this->contatos = $this->updatingListaContatos();
        
         return view('livewire.lista-contatos');
     }
