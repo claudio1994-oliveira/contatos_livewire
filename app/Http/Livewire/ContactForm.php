@@ -7,14 +7,16 @@ use Illuminate\Contracts\Session\Session;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Str;
+use Livewire\WithPagination;
 
 class ContactForm extends Component
 {
     use WithFileUploads;
+    use WithPagination;
 
     public $name;
     public $email;
-    public $contatos;
+   // public $contatos;
     public $photo;
     public $telefone;
     public $instagram;
@@ -36,7 +38,7 @@ class ContactForm extends Component
 
     public function updated()
     {
-        $this->contatos = Contato::all();
+        
        // $this->validate(); Caso precise da validação em tempo real é só chamar o this validate no metodo updated
     }
  
@@ -73,8 +75,6 @@ class ContactForm extends Component
 
     public function render()
     {
-        $this->contatos = Contato::all();
-        
         return view('livewire.contact-form');
     }
 
